@@ -15,3 +15,6 @@ Premium static website for GitHub Pages.
 GitHub Pages is case-sensitive. Do not rename the `assets` folder or image files unless you also update the HTML paths.
 
 The booking calendar currently saves bookings in the same browser/device using local storage. It is not a shared database.
+
+IMPORTANT: Upload the entire `assets` folder to GitHub, not just index.html.
+The owner photo is now a real JPEG (`owner-devendra-singh.jpg`) to avoid MIME/extension problems on GitHub Pages.
