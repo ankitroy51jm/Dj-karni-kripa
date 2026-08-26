@@ -1,20 +1,18 @@
 # DJ Karni Kripa Website
 
-Premium black + gold bilingual DJ booking website.
+## GitHub Pages
+Upload the contents of this folder to the repository root and keep the `assets` folder beside `index.html`.
 
-## Included
-- Responsive premium landing page
-- Owner/DJ/setup imagery
-- Pricing and special services
-- 2-month availability calendar demo
-- Booking form
-- Booking ID generation
-- Local pending booking state
-- UPI QR payment area
-- Call/WhatsApp buttons
-- Sikar + 150 km service area
+Expected structure:
+- index.html
+- style.css
+- script.js
+- assets/owner-devendra-singh.png
+- assets/dj-setup.jpg
+- assets/payment-qr.jpg
 
 ## Important
-GitHub Pages is static hosting. Real multi-user live booking, secure admin login, real payment verification, and automatic WhatsApp confirmation require a backend/database and payment/WhatsApp integration.
+The booking calendar stores entries in the visitor's browser using localStorage. It is NOT a shared cloud database. For truly shared live bookings across phones/devices, connect Firebase/Supabase or another backend.
 
-The current calendar stores demo bookings in the browser's localStorage, so it is NOT a production live booking system yet.
+Portfolio credit:
+https://ankitroy51jm.github.io/
