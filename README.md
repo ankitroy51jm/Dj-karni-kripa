@@ -1,18 +1,17 @@
 # DJ Karni Kripa Website
 
-## GitHub Pages
-Upload the contents of this folder to the repository root and keep the `assets` folder beside `index.html`.
+Premium static website for GitHub Pages.
 
-Expected structure:
-- index.html
-- style.css
-- script.js
-- assets/owner-devendra-singh.png
-- assets/dj-setup.jpg
-- assets/payment-qr.jpg
+## GitHub Pages upload
+1. Upload **all files and the `assets` folder** into the repository root.
+2. Keep these paths exactly as they are:
+   - `assets/owner-devendra-singh.png`
+   - `assets/dj-setup.jpg`
+   - `assets/payment-qr.jpg`
+3. GitHub → Settings → Pages → Deploy from a branch → `main` → `/ (root)`.
+4. Wait for the Pages build to finish, then refresh the live site.
 
 ## Important
-The booking calendar stores entries in the visitor's browser using localStorage. It is NOT a shared cloud database. For truly shared live bookings across phones/devices, connect Firebase/Supabase or another backend.
+GitHub Pages is case-sensitive. Do not rename the `assets` folder or image files unless you also update the HTML paths.
 
-Portfolio credit:
-https://ankitroy51jm.github.io/
+The booking calendar currently saves bookings in the same browser/device using local storage. It is not a shared database.
