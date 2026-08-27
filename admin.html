@@ -1,53 +1,42 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>DJ Admin Panel</title>
-    <style>
-        body { font-family: Arial; background: #1a1a1a; color: white; padding: 20px; }
-        .container { max-width: 400px; margin: auto; background: #2a2a2a; padding: 30px; border-radius: 10px; }
-        input { width: 100%; padding: 10px; margin: 10px 0; border: none; border-radius: 5px; }
-        button { width: 100%; padding: 10px; background: #ff6b6b; border: none; color: white; border-radius: 5px; cursor: pointer; }
-        button:hover { background: #ee5a52; }
-    </style>
-</head>
-<body>
-    <div class="container">
-        <h2>Admin Login</h2>
-        <input type="email" id="email" placeholder="Email">
-        <input type="password" id="password" placeholder="Password">
-        <button onclick="login()">Login</button>
-        <p id="error" style="color: red;"></p>
-    </div>
-
-    <!-- Firebase SDK -->
-    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-database.js"></script>
-    
-    <!-- Tera Firebase Config -->
-    <script src="firebase-config.js"></script>
-
-    <script>
-        function login() {
-            const email = document.getElementById('email').value;
-            const password = document.getElementById('password').value;
-            const errorDiv = document.getElementById('error');
-
-            if (!email || !password) {
-                errorDiv.textContent = 'Email aur Password dono dena!';
-                return;
-            }
-
-            firebase.auth().signInWithEmailAndPassword(email, password)
-                .then(user => {
-                    alert('Login successful! ' + user.user.email);
-                    // Admin panel kholna
-                    window.location.href = 'availability-manager.html';
-                })
-                .catch(error => {
-                    errorDiv.textContent = 'Error: ' + error.message;
-                });
-        }
-    </script>
-</body>
-</html>
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>DJ Karni Kripa — Admin</title><link rel="stylesheet" href="style.css"></head><body>
+<header class="nav"><div class="brand">DJ <span>Karni Kripa</span> <small class="admin-badge">ADMIN</small></div><a class="nav-btn" href="index.html">Website</a></header>
+<main>
+<section class="section admin-page">
+ <div class="section-title"><p class="eyebrow">PRIVATE CONTROL PANEL</p><h1>Availability Manager</h1><p>Sign in to mark dates as Available, Booked or Pending. Changes appear on the public two-month calendar.</p></div>
+ <div id="setupNotice" class="advance-box admin-notice">Firebase is not configured yet. Add your Firebase Web App config to <b>firebase-config.js</b> and enable Email/Password Authentication + Realtime Database.</div>
+ <div id="loginBox" class="admin-card">
+  <h2>Admin Login</h2>
+  <label>Email<input id="email" type="email" autocomplete="username"></label>
+  <label>Password<input id="password" type="password" autocomplete="current-password"></label>
+  <button id="loginBtn" class="btn primary">Login</button><p id="loginMsg" class="note"></p>
+ </div>
+ <div id="panel" class="admin-card" hidden>
+  <div class="admin-top"><div><h2>Manage Dates</h2><p class="muted">Select a date and save its status.</p></div><button id="logoutBtn" class="btn ghost">Logout</button></div>
+  <div class="admin-controls"><label>Date<input id="adminDate" type="date"></label><label>Status<select id="adminStatus"><option value="available">Available</option><option value="booked">Booked</option><option value="pending">Pending</option></select></label><button id="saveBtn" class="btn primary">Save Date</button></div>
+  <div id="adminCalendar" class="calendar-grid"></div>
+  <p id="adminMsg" class="note"></p>
+ </div>
+</section>
+</main><footer>© 2026 DJ Karni Kripa • Admin Panel</footer>
+<script src="firebase-config.js"></script>
+<script type="module">
+import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.12.5/firebase-app.js';
+import { getAuth, signInWithEmailAndPassword, onAuthStateChanged, signOut } from 'https://www.gstatic.com/firebasejs/10.12.5/firebase-auth.js';
+import { getDatabase, ref, set, onValue } from 'https://www.gstatic.com/firebasejs/10.12.5/firebase-database.js';
+const cfg=window.DJ_FIREBASE_CONFIG, setup=document.getElementById('setupNotice');
+const valid=cfg && !Object.values(cfg).some(v=>String(v).includes('YOUR_'));
+const loginBox=document.getElementById('loginBox'), panel=document.getElementById('panel'), msg=document.getElementById('loginMsg');
+if(!valid){setup.hidden=false;} else setup.hidden=true;
+if(valid){
+ const app=initializeApp(cfg), auth=getAuth(app), db=getDatabase(app); let statuses={};
+ const names=['January','February','March','April','May','June','July','August','September','October','November','December'];
+ const days=['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+ const key=d=>d.toISOString().slice(0,10); const add=(d,n)=>{const x=new Date(d);x.setDate(1);x.setMonth(x.getMonth()+n);return x};
+ const render=()=>{const root=document.getElementById('adminCalendar');root.innerHTML='';const now=new Date();now.setHours(12,0,0,0);for(let o=0;o<2;o++){const f=add(now,o),y=f.getFullYear(),m=f.getMonth(),card=document.createElement('div');card.className='month-card';card.innerHTML=`<h3>${names[m]} ${y}</h3><div class="weekdays">${days.map(x=>`<span>${x}</span>`).join('')}</div>`;const ds=document.createElement('div');ds.className='days';for(let i=0;i<f.getDay();i++)ds.innerHTML+='<span class="empty"></span>';for(let n=1;n<=new Date(y,m+1,0).getDate();n++){const d=new Date(y,m,n,12),k=key(d),st=d<now?'past':(statuses[k]||'available'),b=document.createElement('button');b.type='button';b.className='day '+st;b.innerHTML=`<b>${n}</b><small>${st[0].toUpperCase()+st.slice(1)}</small>`;b.disabled=d<now;b.onclick=()=>{document.getElementById('adminDate').value=k;document.getElementById('adminStatus').value=st==='past'?'available':st};ds.appendChild(b)}card.appendChild(ds);root.appendChild(card)}};
+ onValue(ref(db,'availability'),s=>{statuses=s.val()||{};render()});
+ document.getElementById('loginBtn').onclick=async()=>{try{await signInWithEmailAndPassword(auth,email.value,password.value);msg.textContent='Logged in.'}catch(e){msg.textContent='Login failed. Check email/password.'}};
+ document.getElementById('logoutBtn').onclick=()=>signOut(auth);
+ document.getElementById('saveBtn').onclick=async()=>{const d=document.getElementById('adminDate').value,st=document.getElementById('adminStatus').value;if(!d){document.getElementById('adminMsg').textContent='Select a date first.';return}await set(ref(db,'availability/'+d),st);document.getElementById('adminMsg').textContent=`${d} saved as ${st}.`};
+ onAuthStateChanged(auth,u=>{loginBox.hidden=!!u;panel.hidden=!u});
+}else{document.getElementById('loginBtn').disabled=true;}
+</script></body></html>
