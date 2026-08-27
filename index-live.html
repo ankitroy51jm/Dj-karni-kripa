@@ -1,0 +1,248 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>DJ Karni Kripa — Premium Booking</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="nav"><div class="brand">DJ <span>Karni Kripa</span></div><a class="nav-btn" href="#booking">Book Now</a></header>
+
+<main>
+<section class="hero">
+ <div class="hero-copy"><p class="eyebrow">PREMIUM DJ • SOUND • LIGHTING</p>
+ <h1>Make Your Event<br><span>Unforgettable.</span></h1>
+ <p class="lead">Professional DJ setup for weddings, parties, religious events and celebrations.</p>
+ <div class="actions"><a class="btn primary" href="#booking">Send Booking Request</a><a class="btn ghost" href="#contact">Contact Us</a></div></div>
+ <div class="hero-photo"><img src="dj.jpg" alt="DJ setup"></div>
+</section>
+
+<section class="section"><div class="section-title"><p class="eyebrow">THE OWNER</p><h2>DJ Karni Kripa</h2></div>
+ <div class="profile-card"><img src="owner.jpg" alt="Devendra Singh"><div><h3>Devendra Singh</h3><p>Owner • DJ Karni Kripa</p><p class="muted">Professional DJ, sound and event setup for memorable celebrations.</p><div class="chips"><span>DJ</span><span>Sound</span><span>Lighting</span><span>Events</span></div></div></div>
+</section>
+
+
+<section class="section calendar-section" id="availability">
+  <div class="section-title">
+    <p class="eyebrow">DATE AVAILABILITY</p>
+    <h2>Booking Calendar</h2>
+    <p>Check the next two months before sending your booking request.</p>
+  </div>
+  <div class="calendar-legend" aria-label="Calendar legend">
+    <span><i class="dot available"></i> Available</span>
+    <span><i class="dot booked"></i> Booked</span>
+    <span><i class="dot pending"></i> Pending</span>
+    <span><i class="dot past"></i> Past</span>
+  </div>
+  <div id="calendarGrid" class="calendar-grid" aria-live="polite"></div>
+  <p id="calendarStatus" class="note calendar-status">Loading availability…</p>
+</section>
+
+<section id="booking" class="section">
+ <div class="section-title"><p class="eyebrow">BOOKING REQUEST</p><h2>Reserve Your Date</h2><p>Fill in the details below and send the booking request to the team.</p></div>
+ <form id="bookingForm" class="form">
+  <div class="form-grid">
+   <label>Customer Name<input id="name" required></label><label>Contact<input id="phone" required></label>
+   <label>Village / City<input id="village" required></label><label>Location / Venue<input id="location" required></label>
+   <label>Function Type<input id="function" placeholder="Wedding / Party / Rally" required></label><label>Date<input id="date" type="date" required></label>
+   <label>How Many Days?<input id="days" type="number" min="1" required></label><label>Budget <span class="optional">(optional)</span><input id="budget"></label>
+  </div>
+  <label>Additional Details<textarea id="details" rows="4"></textarea></label>
+  <button class="btn primary submit" type="submit">Submit Booking Request</button>
+  <p class="note">The request opens WhatsApp for both Rahul Kumawat and Devendra Singh.</p>
+ </form>
+</section>
+
+
+<section class="section"><div class="section-title"><p class="eyebrow">SERVICES & RULES</p><h2>Event Services</h2></div>
+ <div class="service-grid"><div><b>Wedding & Party</b><span>DJ • Sound • Lighting</span></div><div><b>Announcement</b><span>₹500 per kilometre</span></div><div><b>Shaheed Rally / Procession</b><span>Diesel only</span></div><div><b>Booking</b><span>24×7 enquiry • Wedding: 1 month before • Other parties: 1 day before</span></div></div>
+</section>
+
+<section class="section personal"><div class="section-title"><p class="eyebrow">PERSONAL PROMOTION</p><h2>Need a Video Editor?</h2></div>
+ <div class="promo"><div><h3>Ankit Roy — Video Editor</h3><p>Video editing, reels/shorts, motion graphics and promotional content.</p><a class="btn primary" href="https://ankitroy51jm.github.io/" target="_blank">View My Portfolio</a></div><div class="ar">AR</div></div>
+</section>
+
+<section id="contact" class="section"><div class="section-title"><p class="eyebrow">DIRECT CONTACT</p><h2>Talk to the Team</h2></div>
+ <div class="contacts"><div><h3>Rahul Kumawat</h3><p>8003890561</p><div class="actions"><a class="btn whatsapp" href="https://wa.me/918003890561" target="_blank">WhatsApp</a><a class="btn ghost" href="tel:+918003890561">Call</a></div></div>
+ <div><h3>Devendra Singh</h3><p>9588880177</p><div class="actions"><a class="btn whatsapp" href="https://wa.me/919588880177" target="_blank">WhatsApp</a><a class="btn ghost" href="tel:+919588880177">Call</a></div></div></div>
+</section>
+
+
+
+
+<section class="section packages" id="packages">
+  <div class="section-title">
+    <p class="eyebrow">BOOKING PACKAGES</p>
+    <h2>Choose Your Package</h2>
+    <p>Clear pricing with the services included in each booking option.</p>
+  </div>
+
+  <div class="package-grid">
+    <article class="package-card">
+      <div class="package-top">
+        <span class="price-label">NORMAL BOOKING</span>
+        <span class="package-tag">HOURLY</span>
+      </div>
+      <h3>₹3,100 <small>/ hour</small></h3>
+      <p class="package-desc">Flexible option for parties, celebrations and regular events.</p>
+      <ul class="package-list">
+        <li>DJ setup</li>
+        <li>Sound system</li>
+        <li>Lighting setup</li>
+        <li>Minimum booking: 1 hour</li>
+      </ul>
+      <a class="btn primary package-btn" href="https://wa.me/918003890561?text=Hello%20Rahul%2C%20I%20want%20to%20book%20the%20Normal%20Booking%20package%20%28%E2%82%B93%2C100/hour%29%20for%20my%20event.%20Please%20share%20the%20booking%20details%20and%20availability." target="_blank" rel="noopener">Book Now</a>
+    </article>
+
+    <article class="package-card featured">
+      <div class="package-top">
+        <span class="price-label">BARAAT BOOKING</span>
+        <span class="package-tag">POPULAR</span>
+      </div>
+      <h3>₹11,000</h3>
+      <p class="package-desc">Dedicated package for Baraat events and processions.</p>
+      <ul class="package-list">
+        <li>DJ setup</li>
+        <li>Sound system</li>
+        <li>Lighting setup</li>
+        <li>Baraat / procession booking</li>
+      </ul>
+      <a class="btn primary package-btn" href="https://wa.me/918003890561?text=Hello%20Rahul%2C%20I%20want%20to%20book%20the%20Baraat%20Booking%20package%20%28%E2%82%B911%2C000%29%20for%20my%20event.%20Please%20share%20the%20booking%20details%20and%20availability." target="_blank" rel="noopener">Book Now</a>
+    </article>
+
+    <article class="package-card">
+      <div class="package-top">
+        <span class="price-label">NIGHT PACKAGE</span>
+        <span class="package-tag">3 HOURS</span>
+      </div>
+      <h3>₹5,100</h3>
+      <p class="package-desc">A fixed 3-hour package for evening and night events.</p>
+      <ul class="package-list">
+        <li>DJ setup</li>
+        <li>Sound system</li>
+        <li>Lighting setup</li>
+        <li>3 hours of service</li>
+      </ul>
+      <a class="btn primary package-btn" href="https://wa.me/918003890561?text=Hello%20Rahul%2C%20I%20want%20to%20book%20the%20Night%20Package%20package%20%28%E2%82%B95%2C100%20/%203%20hours%29%20for%20my%20event.%20Please%20share%20the%20booking%20details%20and%20availability." target="_blank" rel="noopener">Book Now</a>
+    </article>
+  </div>
+
+  <div class="advance-box">
+    <strong>Booking Advance: ₹1,100</strong>
+    <span>Advance can be paid through UPI after booking confirmation.</span>
+  </div>
+</section>
+
+
+<section class="section payment" id="payment">
+  <div class="payment-copy">
+    <p class="eyebrow">SECURE PAYMENT</p>
+    <h2>Pay with UPI</h2>
+    <p>Booking advance can be paid directly through UPI.</p>
+    <div class="upi-id-box">
+      <span>UPI ID</span>
+      <strong>9588880177-2@ibl</strong>
+    </div>
+    <div class="actions">
+      <a class="btn primary" href="upi://pay?pa=9588880177-2@ibl&pn=Devendra%20Singh&cu=INR">Pay with UPI</a>
+      <a class="btn ghost" href="tel:+919588880177">Need Help? Call</a>
+    </div>
+    <p class="note">On mobile, tap “Pay with UPI” and select your UPI app. You can also scan the QR code.</p>
+  </div>
+  <div class="payment-qr">
+    <img src="qr.jpg" alt="UPI QR code for Devendra Singh">
+    <span>Scan to Pay</span>
+  </div>
+</section>
+<div class="upi-hidden-note" aria-hidden="true">UPI: 9588880177-2@ibl</div>
+</main>
+
+<section class="section social-section" id="social">
+  <div class="section-title"><p class="eyebrow">FOLLOW US</p><h2>DJ Karni Kripa Online</h2><p>Follow the latest events, videos and updates.</p></div>
+  <div class="social-grid">
+    <a class="social-card" href="https://www.instagram.com/dj_karni_kripa_3346/" target="_blank" rel="noopener"><span class="social-icon">◎</span><div><b>Instagram</b><small>@dj_karni_kripa_3346</small></div><span>↗</span></a>
+    <a class="social-card" href="https://youtube.com/@kanudovlogdj" target="_blank" rel="noopener"><span class="social-icon">▶</span><div><b>YouTube</b><small>@kanudovlogdj</small></div><span>↗</span></a>
+  </div>
+</section>
+<footer>© 2026 DJ Karni Kripa • Website by Ankit Roy • <a href="admin.html" class="admin-link">Admin</a></footer>
+
+<script src="firebase-config.js"></script>
+<audio id="bgMusic" src="background-music.mp3" autoplay loop muted playsinline></audio>
+<script>
+const music=document.getElementById("bgMusic");
+const dateInput=document.getElementById("date");
+if(dateInput){ const now=new Date(); const today=new Date(now.getFullYear(),now.getMonth(),now.getDate()); const max=new Date(today); max.setMonth(max.getMonth()+2); dateInput.min=today.toISOString().slice(0,10); dateInput.max=max.toISOString().slice(0,10); }
+function startMusic(){music.muted=false;music.volume=.22;music.play().catch(()=>{});}
+window.addEventListener("load",startMusic);
+["pointerdown","touchstart","keydown"].forEach(e=>document.addEventListener(e,startMusic,{once:true,passive:true}));
+
+
+document.getElementById("bookingForm").addEventListener("submit",e=>{
+ e.preventDefault(); const v=id=>document.getElementById(id).value.trim();
+ const msg=`*DJ Karni Kripa — New Booking Request*%0A%0A*Customer:* ${v("name")}%0A*Contact:* ${v("phone")}%0A*Village/City:* ${v("village")}%0A*Location:* ${v("location")}%0A*Function:* ${v("function")}%0A*Date:* ${v("date")}%0A*Days:* ${v("days")}%0A*Budget:* ${v("budget")||"Not provided"}%0A*Details:* ${v("details")||"None"}`;
+ window.open("https://wa.me/918003890561?text="+msg,"_blank");setTimeout(()=>window.open("https://wa.me/919588880177?text="+msg,"_blank"),700);
+});
+</script>
+
+<script type="module">
+import { createClient } from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm";
+
+const SUPABASE_URL="https://jkecyebnflnhnwvdlyhp.supabase.co";
+const SUPABASE_KEY="sb_publishable_rdL9beoTci88Q4nMnSQH5w_WQnshhl_";
+const grid=document.getElementById("calendarGrid");
+const statusEl=document.getElementById("calendarStatus");
+const supabase=createClient(SUPABASE_URL,SUPABASE_KEY);
+let statuses={};
+
+const months=["January","February","March","April","May","June","July","August","September","October","November","December"];
+const weekdays=["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
+const iso=d=>{const y=d.getFullYear(),m=String(d.getMonth()+1).padStart(2,"0"),day=String(d.getDate()).padStart(2,"0");return `${y}-${m}-${day}`};
+
+function renderCalendar(){
+ grid.innerHTML="";
+ const now=new Date(); now.setHours(12,0,0,0);
+ for(let offset=0;offset<2;offset++){
+  const first=new Date(now.getFullYear(),now.getMonth()+offset,1,12);
+  const y=first.getFullYear(),m=first.getMonth();
+  const card=document.createElement("div"); card.className="month-card";
+  const h=document.createElement("h3"); h.textContent=`${months[m]} ${y}`; card.appendChild(h);
+  const wd=document.createElement("div"); wd.className="weekdays";
+  weekdays.forEach(x=>{const e=document.createElement("span");e.textContent=x;wd.appendChild(e)}); card.appendChild(wd);
+  const days=document.createElement("div"); days.className="days";
+  for(let i=0;i<first.getDay();i++){const e=document.createElement("span");e.className="empty";days.appendChild(e)}
+  const total=new Date(y,m+1,0).getDate();
+  for(let n=1;n<=total;n++){
+   const d=new Date(y,m,n,12),k=iso(d),past=d<now,st=past?"past":(statuses[k]||"available");
+   const b=document.createElement("button");b.type="button";b.className=`day ${st}`;
+   b.innerHTML=`<b>${n}</b><small>${st==="booked"?"Booked":st==="pending"?"Pending":st==="past"?"Past":"Available"}</small>`;
+   if(past)b.disabled=true;
+   else b.onclick=()=>{document.getElementById("date").value=k;document.getElementById("booking").scrollIntoView({behavior:"smooth"});};
+   days.appendChild(b);
+  }
+  card.appendChild(days);grid.appendChild(card);
+ }
+}
+
+async function loadAvailability(){
+ statusEl.textContent="Loading availability…";
+ const {data,error}=await supabase.from("availability").select("date,status");
+ if(error){
+   console.error(error);
+   statusEl.textContent="Availability could not be loaded.";
+   renderCalendar();
+   return;
+ }
+ statuses={};
+ (data||[]).forEach(r=>statuses[r.date]=r.status);
+ renderCalendar();
+ statusEl.textContent="Live availability is connected.";
+}
+
+renderCalendar();
+loadAvailability();
+
+supabase.channel("public-availability-live")
+ .on("postgres_changes",{event:"*",schema:"public",table:"availability"},()=>loadAvailability())
+ .subscribe();
+</script>
+</body></html>
