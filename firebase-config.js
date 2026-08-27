@@ -1,4 +1,4 @@
-window.firebaseConfig = {
+window.DJ_FIREBASE_CONFIG = {
   apiKey: "AIzaSyD3k4A8cOkFXtdxMTjevs8mQstTEHw80TY",
   authDomain: "dj-karni-kripa.firebaseapp.com",
   projectId: "dj-karni-kripa",
