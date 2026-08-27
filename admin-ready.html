@@ -1,0 +1,268 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>DJ Karni Kripa — Admin</title>
+<link rel="stylesheet" href="style.css">
+<style>
+.admin-shell{max-width:1000px;margin:auto}
+.admin-login{max-width:520px;margin:35px auto}
+.admin-head{display:flex;justify-content:space-between;align-items:center;gap:15px;flex-wrap:wrap}
+.admin-status{margin:12px 0;padding:12px 14px;border-radius:12px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.09)}
+.admin-status.ok{border-color:rgba(57,217,138,.3)}
+.admin-status.err{border-color:rgba(255,95,109,.35)}
+.admin-form{display:grid;grid-template-columns:1fr 1fr auto;gap:12px;align-items:end;margin:20px 0}
+.admin-form label{display:flex;flex-direction:column;gap:7px}
+.admin-form input,.admin-form select{width:100%;box-sizing:border-box}
+.admin-actions{display:flex;gap:10px;flex-wrap:wrap}.admin-list{display:grid;gap:10px;margin-top:20px}
+.admin-row{display:grid;grid-template-columns:1fr auto auto;gap:12px;align-items:center;padding:14px;border:1px solid rgba(255,255,255,.09);border-radius:14px;background:rgba(255,255,255,.025)}
+.status-pill{padding:6px 10px;border-radius:999px;font-size:.75rem}
+.status-pill.available{border:1px solid rgba(57,217,138,.3);color:#55df9a}
+.status-pill.booked{border:1px solid rgba(255,95,109,.35);color:#ff7a84}
+.status-pill.pending{border:1px solid rgba(242,201,76,.35);color:#f2c94c}
+@media(max-width:700px){.admin-form{grid-template-columns:1fr}.admin-row{grid-template-columns:1fr auto}.admin-row .delete-btn{grid-column:2}}
+</style>
+</head>
+<body>
+<header class="nav">
+  <div class="brand">DJ <span>Karni Kripa</span> <small class="admin-badge">ADMIN</small></div>
+  <a class="nav-btn" href="index.html">Website</a>
+</header>
+
+<main>
+<section class="section admin-page admin-shell">
+
+  <div class="section-title">
+    <p class="eyebrow">PRIVATE CONTROL PANEL</p>
+    <h1>Availability Manager</h1>
+    <p>Sign in to manage booking dates. Changes are saved to the live database.</p>
+  </div>
+
+  <div id="loginBox" class="admin-card admin-login">
+    <h2>Admin Login</h2>
+    <label>Email
+      <input id="email" type="email" autocomplete="username" value="Rahulkumawat2009rahul@gmail.com">
+    </label>
+    <label>Password
+      <input id="password" type="password" autocomplete="current-password">
+    </label>
+    <button id="loginBtn" class="btn primary">Login</button>
+    <p id="loginMsg" class="note"></p>
+  </div>
+
+  <div id="panel" class="admin-card" hidden>
+    <div class="admin-head">
+      <div>
+        <h2>Manage Dates</h2>
+        <p class="muted">Select a date and choose its status.</p>
+      </div>
+      <button id="logoutBtn" class="btn ghost">Logout</button>
+    </div>
+
+    <div id="dbStatus" class="admin-status">Connecting to database…</div>
+
+    <div class="admin-form">
+      <label>Date
+        <input id="adminDate" type="date">
+      </label>
+      <label>Status
+        <select id="adminStatus">
+          <option value="available">Available</option>
+          <option value="booked">Booked</option>
+          <option value="pending">Pending</option>
+        </select>
+      </label>
+      <div class="admin-actions">
+        <button id="saveBtn" class="btn primary">Save / Update</button>
+        <button id="clearBtn" class="btn ghost" type="button">Make Available</button>
+      </div>
+    </div>
+
+    <div id="adminCalendar" class="calendar-grid"></div>
+    <div id="adminList" class="admin-list"></div>
+    <p id="adminMsg" class="note"></p>
+  </div>
+
+</section>
+</main>
+
+<footer>© 2026 DJ Karni Kripa • Admin Panel</footer>
+
+<script type="module">
+import { createClient } from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm";
+
+const SUPABASE_URL = "https://jkecyebnflnhnwvdlyhp.supabase.co";
+const SUPABASE_KEY = "sb_publishable_rdL9beoTci88Q4nMnSQH5w_WQnshhl_";
+const ADMIN_EMAIL = "Rahulkumawat2009rahul@gmail.com";
+const TABLE = "availability";
+
+const supabase = createClient(SUPABASE_URL, SUPABASE_KEY);
+
+const $ = id => document.getElementById(id);
+const loginBox = $("loginBox");
+const panel = $("panel");
+const loginMsg = $("loginMsg");
+const dbStatus = $("dbStatus");
+const adminMsg = $("adminMsg");
+let rows = [];
+
+function todayISO(){
+  const d = new Date();
+  const y=d.getFullYear(), m=String(d.getMonth()+1).padStart(2,"0"), day=String(d.getDate()).padStart(2,"0");
+  return `${y}-${m}-${day}`;
+}
+
+function escapeHtml(s){
+  return String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+}
+
+function statusText(s){ return s.charAt(0).toUpperCase()+s.slice(1); }
+
+function renderList(){
+  const list=$("adminList");
+  const sorted=[...rows].sort((a,b)=>String(a.date).localeCompare(String(b.date)));
+  if(!sorted.length){
+    list.innerHTML='<p class="note">No dates saved yet. New dates will be Available by default.</p>';
+    return;
+  }
+  list.innerHTML=sorted.map(r=>`
+    <div class="admin-row">
+      <div><b>${escapeHtml(r.date)}</b></div>
+      <span class="status-pill ${escapeHtml(r.status)}">${statusText(escapeHtml(r.status))}</span>
+      <button class="btn ghost edit-btn" data-date="${escapeHtml(r.date)}" data-status="${escapeHtml(r.status)}">Edit</button>
+    </div>
+  `).join("");
+  list.querySelectorAll(".edit-btn").forEach(btn=>{
+    btn.onclick=()=>{
+      $("adminDate").value=btn.dataset.date;
+      $("adminStatus").value=btn.dataset.status;
+      $("adminDate").scrollIntoView({behavior:"smooth",block:"center"});
+    };
+  });
+}
+
+function renderCalendar(){
+  const root=$("adminCalendar");
+  root.innerHTML="";
+  const statusMap=Object.fromEntries(rows.map(r=>[r.date,r.status]));
+  const names=["January","February","March","April","May","June","July","August","September","October","November","December"];
+  const weekdays=["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
+  const now=new Date(); now.setHours(12,0,0,0);
+
+  for(let offset=0;offset<2;offset++){
+    const first=new Date(now.getFullYear(),now.getMonth()+offset,1,12);
+    const y=first.getFullYear(), m=first.getMonth();
+    const card=document.createElement("div");
+    card.className="month-card";
+    card.innerHTML=`<h3>${names[m]} ${y}</h3><div class="weekdays">${weekdays.map(x=>`<span>${x}</span>`).join("")}</div>`;
+    const days=document.createElement("div"); days.className="days";
+
+    for(let i=0;i<first.getDay();i++) days.innerHTML+='<span class="empty"></span>';
+
+    const count=new Date(y,m+1,0).getDate();
+    for(let n=1;n<=count;n++){
+      const d=new Date(y,m,n,12);
+      const k=`${y}-${String(m+1).padStart(2,"0")}-${String(n).padStart(2,"0")}`;
+      const past=d<now;
+      const st=past ? "past" : (statusMap[k] || "available");
+      const b=document.createElement("button");
+      b.type="button";
+      b.className=`day ${st}`;
+      b.innerHTML=`<b>${n}</b><small>${statusText(st)}</small>`;
+      b.disabled=past;
+      if(!past) b.onclick=()=>{
+        $("adminDate").value=k;
+        $("adminStatus").value=statusMap[k] || "available";
+        window.scrollTo({top:$("adminDate").getBoundingClientRect().top+window.scrollY-90,behavior:"smooth"});
+      };
+      days.appendChild(b);
+    }
+    card.appendChild(days);
+    root.appendChild(card);
+  }
+}
+
+async function loadRows(){
+  dbStatus.textContent="Loading availability…";
+  const {data,error}=await supabase.from(TABLE).select("date,status").order("date",{ascending:true});
+  if(error){
+    dbStatus.textContent="Database error: "+error.message;
+    dbStatus.className="admin-status err";
+    return;
+  }
+  rows=data || [];
+  dbStatus.textContent="Database connected • Changes sync to Supabase.";
+  dbStatus.className="admin-status ok";
+  renderCalendar();
+  renderList();
+}
+
+$("loginBtn").onclick=async()=>{
+  loginMsg.textContent="Signing in…";
+  const email=$("email").value.trim();
+  const password=$("password").value;
+  if(email.toLowerCase()!==ADMIN_EMAIL.toLowerCase()){
+    loginMsg.textContent="This email is not the admin email.";
+    return;
+  }
+  const {error}=await supabase.auth.signInWithPassword({email,password});
+  if(error) loginMsg.textContent="Login failed: "+error.message;
+};
+
+$("logoutBtn").onclick=async()=>{
+  await supabase.auth.signOut();
+};
+
+$("saveBtn").onclick=async()=>{
+  const date=$("adminDate").value;
+  const status=$("adminStatus").value;
+  if(!date){adminMsg.textContent="Select a date first.";return;}
+
+  adminMsg.textContent="Saving…";
+  const {error}=await supabase.from(TABLE).upsert({date,status},{onConflict:"date"});
+  if(error){
+    adminMsg.textContent="Save failed: "+error.message;
+    return;
+  }
+  adminMsg.textContent=`${date} saved as ${statusText(status)}.`;
+  await loadRows();
+};
+
+$("clearBtn").onclick=async()=>{
+  const date=$("adminDate").value;
+  if(!date){adminMsg.textContent="Select a date first.";return;}
+  $("adminStatus").value="available";
+  adminMsg.textContent="Saving as Available…";
+  const {error}=await supabase.from(TABLE).upsert({date,status:"available"},{onConflict:"date"});
+  if(error){adminMsg.textContent="Save failed: "+error.message;return;}
+  adminMsg.textContent=`${date} is now Available.`;
+  await loadRows();
+};
+
+supabase.auth.onAuthStateChange(async(_event,session)=>{
+  const user=session?.user;
+  const isAdmin=user && user.email?.toLowerCase()===ADMIN_EMAIL.toLowerCase();
+  loginBox.hidden=!!isAdmin;
+  panel.hidden=!isAdmin;
+
+  if(user && !isAdmin){
+    await supabase.auth.signOut();
+    loginMsg.textContent="This account is not authorized as admin.";
+    return;
+  }
+  if(isAdmin){
+    $("adminDate").min=todayISO();
+    $("adminDate").value=todayISO();
+    await loadRows();
+
+    supabase.channel("availability-admin")
+      .on("postgres_changes",
+        {event:"*",schema:"public",table:TABLE},
+        ()=>loadRows()
+      ).subscribe();
+  }
+});
+</script>
+</body>
+</html>
