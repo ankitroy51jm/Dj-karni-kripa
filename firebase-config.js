@@ -1,5 +1,6 @@
-window.DJ_FIREBASE_CONFIG = {
-  apiKey: "YOUR_API_KEY",
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+const firebaseConfig = {
+  apiKey: "AIzaSyD3k4A8cOkFXtdxMTjevs8mQstTEHw80TY",
   authDomain: "dj-karni-kripa.firebaseapp.com",
   databaseURL: "https://dj-karni-kripa-default-rtdb.firebaseio.com",
   projectId: "dj-karni-kripa",
