@@ -1,6 +1,7 @@
 window.DJ_FIREBASE_CONFIG = {
-  apiKey: "AIzaSyD3k4A8cOkFXtdxMTjevs8mQstTEHw80TY",
+  apiKey: "YOUR_API_KEY",
   authDomain: "dj-karni-kripa.firebaseapp.com",
+  databaseURL: "https://dj-karni-kripa-default-rtdb.firebaseio.com",
   projectId: "dj-karni-kripa",
   storageBucket: "dj-karni-kripa.firebasestorage.app",
   messagingSenderId: "724610528893",
