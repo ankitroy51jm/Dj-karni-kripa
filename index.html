@@ -1,169 +1,234 @@
 <!doctype html>
-<html lang="hi">
+<html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="theme-color" content="#0b0b0d">
-  <title>DJ Karni Kripa | Premium DJ Service</title>
-  <meta name="description" content="DJ Karni Kripa — premium DJ, Barat, Night DJ और announcement service.">
-  <link rel="stylesheet" href="style.css">
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>DJ Karni Kripa — Premium Booking</title>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
-<header class="topbar">
-  <a class="brand" href="#home"><span>DJ</span> KARNI KRIPA</a>
-  <button class="menu" aria-label="Menu" onclick="document.body.classList.toggle('nav-open')">☰</button>
-  <nav>
-    <a href="#home">Home</a>
-    <a href="#services">Services</a>
-    <a href="#pricing">Rates</a>
-    <a href="#owner">Owner</a>
-    <a href="#gallery">Photos</a>
-    <a href="#booking">Booking</a>
-    <a href="#payment">Payment</a>
-  </nav>
-</header>
+<header class="nav"><div class="brand">DJ <span>Karni Kripa</span></div><a class="nav-btn" href="#booking">Book Now</a></header>
 
-<main id="home">
-  <section class="hero">
-    <div class="hero-copy">
-      <p class="eyebrow">PREMIUM DJ • BARAT • EVENTS</p>
-      <h1>Music that makes<br><em>the moment.</em></h1>
-      <p class="lead">शादी, बारात, पार्टी और special events के लिए professional DJ setup और energetic sound experience.</p>
-      <div class="actions">
-        <a class="btn primary" href="tel:8003890561">Call for Booking</a>
-        <a class="btn ghost" href="#booking">Check Availability</a>
+<main>
+<section class="hero">
+ <div class="hero-copy"><p class="eyebrow">PREMIUM DJ • SOUND • LIGHTING</p>
+ <h1>Make Your Event<br><span>Unforgettable.</span></h1>
+ <p class="lead">Professional DJ setup for weddings, parties, religious events and celebrations.</p>
+ <div class="actions"><a class="btn primary" href="#booking">Send Booking Request</a><a class="btn ghost" href="#contact">Contact Us</a></div></div>
+ <div class="hero-photo"><img src="dj.jpg" alt="DJ setup"></div>
+</section>
+
+<section class="section"><div class="section-title"><p class="eyebrow">THE OWNER</p><h2>DJ Karni Kripa</h2></div>
+ <div class="profile-card"><img src="owner.jpg" alt="Devendra Singh"><div><h3>Devendra Singh</h3><p>Owner • DJ Karni Kripa</p><p class="muted">Professional DJ, sound and event setup for memorable celebrations.</p><div class="chips"><span>DJ</span><span>Sound</span><span>Lighting</span><span>Events</span></div></div></div>
+</section>
+
+
+<section class="section calendar-section" id="availability">
+  <div class="section-title">
+    <p class="eyebrow">DATE AVAILABILITY</p>
+    <h2>Booking Calendar</h2>
+    <p>Check the next two months before sending your booking request.</p>
+  </div>
+  <div class="calendar-legend" aria-label="Calendar legend">
+    <span><i class="dot available"></i> Available</span>
+    <span><i class="dot booked"></i> Booked</span>
+    <span><i class="dot pending"></i> Pending</span>
+    <span><i class="dot past"></i> Past</span>
+  </div>
+  <div id="calendarGrid" class="calendar-grid" aria-live="polite"></div>
+  <p id="calendarStatus" class="note calendar-status">Loading availability…</p>
+</section>
+
+<section id="booking" class="section">
+ <div class="section-title"><p class="eyebrow">BOOKING REQUEST</p><h2>Reserve Your Date</h2><p>Fill in the details below and send the booking request to the team.</p></div>
+ <form id="bookingForm" class="form">
+  <div class="form-grid">
+   <label>Customer Name<input id="name" required></label><label>Contact<input id="phone" required></label>
+   <label>Village / City<input id="village" required></label><label>Location / Venue<input id="location" required></label>
+   <label>Function Type<input id="function" placeholder="Wedding / Party / Rally" required></label><label>Date<input id="date" type="date" required></label>
+   <label>How Many Days?<input id="days" type="number" min="1" required></label><label>Budget <span class="optional">(optional)</span><input id="budget"></label>
+  </div>
+  <label>Additional Details<textarea id="details" rows="4"></textarea></label>
+  <button class="btn primary submit" type="submit">Submit Booking Request</button>
+  <p class="note">The request opens WhatsApp for both Rahul Kumawat and Devendra Singh.</p>
+ </form>
+</section>
+
+
+<section class="section"><div class="section-title"><p class="eyebrow">SERVICES & RULES</p><h2>Event Services</h2></div>
+ <div class="service-grid"><div><b>Wedding & Party</b><span>DJ • Sound • Lighting</span></div><div><b>Announcement</b><span>₹500 per kilometre</span></div><div><b>Shaheed Rally / Procession</b><span>Diesel only</span></div><div><b>Booking</b><span>24×7 enquiry • Wedding: 1 month before • Other parties: 1 day before</span></div></div>
+</section>
+
+<section class="section personal"><div class="section-title"><p class="eyebrow">PERSONAL PROMOTION</p><h2>Need a Video Editor?</h2></div>
+ <div class="promo"><div><h3>Ankit Roy — Video Editor</h3><p>Video editing, reels/shorts, motion graphics and promotional content.</p><a class="btn primary" href="https://ankitroy51jm.github.io/" target="_blank">View My Portfolio</a></div><div class="ar">AR</div></div>
+</section>
+
+<section id="contact" class="section"><div class="section-title"><p class="eyebrow">DIRECT CONTACT</p><h2>Talk to the Team</h2></div>
+ <div class="contacts"><div><h3>Rahul Kumawat</h3><p>8003890561</p><div class="actions"><a class="btn whatsapp" href="https://wa.me/918003890561" target="_blank">WhatsApp</a><a class="btn ghost" href="tel:+918003890561">Call</a></div></div>
+ <div><h3>Devendra Singh</h3><p>9588880177</p><div class="actions"><a class="btn whatsapp" href="https://wa.me/919588880177" target="_blank">WhatsApp</a><a class="btn ghost" href="tel:+919588880177">Call</a></div></div></div>
+</section>
+
+
+
+
+<section class="section packages" id="packages">
+  <div class="section-title">
+    <p class="eyebrow">BOOKING PACKAGES</p>
+    <h2>Choose Your Package</h2>
+    <p>Clear pricing with the services included in each booking option.</p>
+  </div>
+
+  <div class="package-grid">
+    <article class="package-card">
+      <div class="package-top">
+        <span class="price-label">NORMAL BOOKING</span>
+        <span class="package-tag">HOURLY</span>
       </div>
-      <div class="quick"><span>24×7 Booking</span><span>•</span><span>Sikar + nearby areas</span></div>
-    </div>
-    <div class="hero-image">
-      <img src="./assets/dj-setup.jpg" alt="DJ Karni Kripa DJ setup">
-    </div>
-  </section>
+      <h3>₹3,100 <small>/ hour</small></h3>
+      <p class="package-desc">Flexible option for parties, celebrations and regular events.</p>
+      <ul class="package-list">
+        <li>DJ setup</li>
+        <li>Sound system</li>
+        <li>Lighting setup</li>
+        <li>Minimum booking: 1 hour</li>
+      </ul>
+      <a class="btn primary package-btn" href="https://wa.me/918003890561?text=Hello%20Rahul%2C%20I%20want%20to%20book%20the%20Normal%20Booking%20package%20%28%E2%82%B93%2C100/hour%29%20for%20my%20event.%20Please%20share%20the%20booking%20details%20and%20availability." target="_blank" rel="noopener">Book Now</a>
+    </article>
 
-  <section id="gallery" class="section showcase-section">
-    <div class="section-head"><p class="eyebrow">DJ KARNI KRIPA</p><h2>Meet the team & the setup.</h2><p>Owner aur DJ setup ki photos ek hi premium section mein.</p></div>
-    <div class="showcase-grid">
-      <article class="showcase-card photo-card">
-        <img src="./assets/owner-devendra-singh.jpg" alt="Devendra Singh — Owner, DJ Karni Kripa" width="900" height="1200" loading="eager">
-        <div class="showcase-overlay"><span>OWNER</span><strong>Devendra Singh</strong></div>
-      </article>
-      <article class="showcase-card photo-card">
-        <img src="./assets/dj-setup.jpg" alt="DJ Karni Kripa premium DJ setup" width="1120" height="1500" loading="eager">
-        <div class="showcase-overlay"><span>THE SETUP</span><strong>DJ Karni Kripa</strong></div>
-      </article>
-      <article class="creator-card">
-        <div class="creator-mark">AR</div>
-        <p class="eyebrow">VIDEO EDITING</p>
-        <h3>Need professional<br>video editing?</h3>
-        <p>Reels, YouTube videos, promotional edits, motion graphics aur event videos ke liye contact karein.</p>
-        <a class="creator-link" href="https://ankitroy51jm.github.io/" target="_blank" rel="noopener">View Ankit Roy Portfolio ↗</a>
-        <a class="btn primary creator-btn" href="https://ankitroy51jm.github.io/" target="_blank" rel="noopener">Contact for Video Editing</a>
-      </article>
-    </div>
-  </section>
-
-  <section id="services" class="section">
-    <div class="section-head"><p class="eyebrow">WHAT WE DO</p><h2>Built for big moments.</h2></div>
-    <div class="cards">
-      <article><b>01</b><h3>Wedding & Barat</h3><p>बारात और शादी के functions के लिए full DJ setup.</p></article>
-      <article><b>02</b><h3>Night Events</h3><p>Night functions के लिए dedicated DJ package.</p></article>
-      <article><b>03</b><h3>Announcement</h3><p>गाँव/शहर में DJ के साथ announcement service.</p></article>
-      <article><b>04</b><h3>Special Rallies</h3><p>Special rally/event के लिए diesel अलग से.</p></article>
-    </div>
-  </section>
-
-  <section id="pricing" class="section dark-section">
-    <div class="section-head"><p class="eyebrow">SIMPLE PRICING</p><h2>Choose your setup.</h2></div>
-    <div class="price-grid">
-      <div class="price"><span>Hourly</span><strong>₹3,100</strong><small>Minimum 1 hour</small></div>
-      <div class="price featured"><span>Barat</span><strong>₹11,000</strong><small>Barat package</small></div>
-      <div class="price"><span>Night</span><strong>₹5,100</strong><small>3 hours</small></div>
-      <div class="price"><span>Announcement</span><strong>₹500/km</strong><small>DJ के साथ</small></div>
-    </div>
-    <div class="notes">
-      <span>Booking advance: ₹1,100</span>
-      <span>Advance is non-refundable</span>
-      <span>Wedding: book 1 month before</span>
-      <span>Other parties: book 1 day before</span>
-    </div>
-  </section>
-
-  <section id="owner" class="section owner-section">
-    <div class="owner-photo"><img src="./assets/owner-devendra-singh.jpg" alt="Devendra Singh, owner of DJ Karni Kripa"></div>
-    <div class="owner-copy">
-      <p class="eyebrow">THE OWNER</p>
-      <h2>Devendra Singh</h2>
-      <p>DJ Karni Kripa को professional service और reliable event experience के साथ आगे बढ़ाने वाले owner.</p>
-      <a class="phone" href="tel:8003890561">8003890561</a>
-      <a class="btn primary" href="tel:8003890561">Contact Owner</a>
-    </div>
-  </section>
-
-  <section id="booking" class="section booking-section">
-    <div class="section-head">
-      <p class="eyebrow">LIVE AVAILABILITY</p>
-      <h2>Next 2 months.</h2>
-      <p>सिर्फ booking date दिखाई जाती है — payment details calendar में नहीं दिखाई जातीं.</p>
-    </div>
-    <div class="booking-layout">
-      <div>
-        <div class="calendar-bar">
-          <button class="cal-btn" onclick="changeMonth(-1)">‹</button>
-          <strong id="monthTitle"></strong>
-          <button class="cal-btn" onclick="changeMonth(1)">›</button>
-        </div>
-        <div class="calendar" id="calendar"></div>
+    <article class="package-card featured">
+      <div class="package-top">
+        <span class="price-label">BARAAT BOOKING</span>
+        <span class="package-tag">POPULAR</span>
       </div>
-      <form id="bookingForm" class="booking-form">
-        <h3>Add booking</h3>
-        <label>Customer name<input name="name" required></label>
-        <label>Contact<input name="contact" inputmode="tel" required></label>
-        <label>Village<input name="village" required></label>
-        <label>Location<input name="location" required></label>
-        <label>Function<select name="function" required>
-          <option value="">Select</option><option>Wedding</option><option>Barat</option><option>Party</option><option>Night Event</option><option>Announcement</option><option>Other</option>
-        </select></label>
-        <label>Budget<input name="budget" inputmode="numeric" placeholder="₹"></label>
-        <label>How many days?<input name="days" type="number" min="1" required></label>
-        <label>Booking date<input name="date" id="bookingDate" type="date" required></label>
-        <button class="btn primary" type="submit">Save Booking</button>
-        <p class="form-note">Bookings are saved in this browser. For shared live booking data across devices, connect a database/backend.</p>
-      </form>
-    </div>
-    <div id="bookingList" class="booking-list"></div>
-  </section>
+      <h3>₹11,000</h3>
+      <p class="package-desc">Dedicated package for Baraat events and processions.</p>
+      <ul class="package-list">
+        <li>DJ setup</li>
+        <li>Sound system</li>
+        <li>Lighting setup</li>
+        <li>Baraat / procession booking</li>
+      </ul>
+      <a class="btn primary package-btn" href="https://wa.me/918003890561?text=Hello%20Rahul%2C%20I%20want%20to%20book%20the%20Baraat%20Booking%20package%20%28%E2%82%B911%2C000%29%20for%20my%20event.%20Please%20share%20the%20booking%20details%20and%20availability." target="_blank" rel="noopener">Book Now</a>
+    </article>
 
-  <section id="payment" class="section payment-section">
-    <div class="payment-card">
-      <div>
-        <p class="eyebrow">PAYMENT</p>
-        <h2>Pay via UPI</h2>
-        <p>Booking advance: <b>₹1,100</b> • Non-refundable</p>
-        <p class="upi">UPI: <strong>9588880177</strong></p>
-        <a class="btn ghost" href="tel:9588880177">Payment Help</a>
+    <article class="package-card">
+      <div class="package-top">
+        <span class="price-label">NIGHT PACKAGE</span>
+        <span class="package-tag">3 HOURS</span>
       </div>
-      <div class="qr"><img src="./assets/payment-qr.jpg" alt="UPI QR code for payment"><small>Scan to pay</small></div>
-    </div>
-  </section>
+      <h3>₹5,100</h3>
+      <p class="package-desc">A fixed 3-hour package for evening and night events.</p>
+      <ul class="package-list">
+        <li>DJ setup</li>
+        <li>Sound system</li>
+        <li>Lighting setup</li>
+        <li>3 hours of service</li>
+      </ul>
+      <a class="btn primary package-btn" href="https://wa.me/918003890561?text=Hello%20Rahul%2C%20I%20want%20to%20book%20the%20Night%20Package%20package%20%28%E2%82%B95%2C100%20/%203%20hours%29%20for%20my%20event.%20Please%20share%20the%20booking%20details%20and%20availability." target="_blank" rel="noopener">Book Now</a>
+    </article>
+  </div>
 
-  <section class="section contact-strip">
-    <p class="eyebrow">READY TO BOOK?</p>
-    <h2>Let's make your event loud.</h2>
-    <a class="btn primary" href="tel:8003890561">8003890561</a>
-  </section>
+  <div class="advance-box">
+    <strong>Booking Advance: ₹1,100</strong>
+    <span>Advance can be paid through UPI after booking confirmation.</span>
+  </div>
+</section>
+
+
+<section class="section payment" id="payment">
+  <div class="payment-copy">
+    <p class="eyebrow">SECURE PAYMENT</p>
+    <h2>Pay with UPI</h2>
+    <p>Booking advance can be paid directly through UPI.</p>
+    <div class="upi-id-box">
+      <span>UPI ID</span>
+      <strong>9588880177-2@ibl</strong>
+    </div>
+    <div class="actions">
+      <a class="btn primary" href="upi://pay?pa=9588880177-2@ibl&pn=Devendra%20Singh&cu=INR">Pay with UPI</a>
+      <a class="btn ghost" href="tel:+919588880177">Need Help? Call</a>
+    </div>
+    <p class="note">On mobile, tap “Pay with UPI” and select your UPI app. You can also scan the QR code.</p>
+  </div>
+  <div class="payment-qr">
+    <img src="qr.jpg" alt="UPI QR code for Devendra Singh">
+    <span>Scan to Pay</span>
+  </div>
+</section>
+<div class="upi-hidden-note" aria-hidden="true">UPI: 9588880177-2@ibl</div>
 </main>
 
-<footer>
-  <div>
-    <strong>DJ KARNI KRIPA</strong>
-    <p>Premium DJ • Barat • Events</p>
+<section class="section social-section" id="social">
+  <div class="section-title"><p class="eyebrow">FOLLOW US</p><h2>DJ Karni Kripa Online</h2><p>Follow the latest events, videos and updates.</p></div>
+  <div class="social-grid">
+    <a class="social-card" href="https://www.instagram.com/dj_karni_kripa_3346/" target="_blank" rel="noopener"><span class="social-icon">◎</span><div><b>Instagram</b><small>@dj_karni_kripa_3346</small></div><span>↗</span></a>
+    <a class="social-card" href="https://youtube.com/@kanudovlogdj" target="_blank" rel="noopener"><span class="social-icon">▶</span><div><b>YouTube</b><small>@kanudovlogdj</small></div><span>↗</span></a>
   </div>
-  <div class="creator">
-    <small>Website credit • <b>Ankit Roy</b></small>
-    <a href="https://ankitroy51jm.github.io/" target="_blank" rel="noopener">Contact for Video Editing • View Portfolio ↗</a>
-  </div>
-  <div class="copyright">© <span id="year"></span> DJ Karni Kripa. All rights reserved.</div>
-</footer>
-<script src="script.js"></script>
-</body>
-</html>
+</section>
+<footer>© 2026 DJ Karni Kripa • Website by Ankit Roy • <a href="admin.html" class="admin-link">Admin</a></footer>
+
+<script src="firebase-config.js"></script>
+<audio id="bgMusic" src="background-music.mp3" autoplay loop muted playsinline></audio>
+<script>
+const music=document.getElementById("bgMusic");
+const dateInput=document.getElementById("date");
+if(dateInput){ const now=new Date(); const today=new Date(now.getFullYear(),now.getMonth(),now.getDate()); const max=new Date(today); max.setMonth(max.getMonth()+2); dateInput.min=today.toISOString().slice(0,10); dateInput.max=max.toISOString().slice(0,10); }
+function startMusic(){music.muted=false;music.volume=.22;music.play().catch(()=>{});}
+window.addEventListener("load",startMusic);
+["pointerdown","touchstart","keydown"].forEach(e=>document.addEventListener(e,startMusic,{once:true,passive:true}));
+
+
+document.getElementById("bookingForm").addEventListener("submit",e=>{
+ e.preventDefault(); const v=id=>document.getElementById(id).value.trim();
+ const msg=`*DJ Karni Kripa — New Booking Request*%0A%0A*Customer:* ${v("name")}%0A*Contact:* ${v("phone")}%0A*Village/City:* ${v("village")}%0A*Location:* ${v("location")}%0A*Function:* ${v("function")}%0A*Date:* ${v("date")}%0A*Days:* ${v("days")}%0A*Budget:* ${v("budget")||"Not provided"}%0A*Details:* ${v("details")||"None"}`;
+ window.open("https://wa.me/918003890561?text="+msg,"_blank");setTimeout(()=>window.open("https://wa.me/919588880177?text="+msg,"_blank"),700);
+});
+</script>
+
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-app.js";
+import { getDatabase, ref, onValue } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-database.js";
+
+const grid=document.getElementById('calendarGrid');
+const statusEl=document.getElementById('calendarStatus');
+const cfg=window.DJ_FIREBASE_CONFIG;
+const validCfg=cfg && !Object.values(cfg).some(v=>String(v).includes('YOUR_'));
+const monthNames=['January','February','March','April','May','June','July','August','September','October','November','December'];
+const dayNames=['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+let statuses={};
+
+function key(d){return d.toISOString().slice(0,10)}
+function addMonths(d,n){const x=new Date(d); x.setDate(1); x.setMonth(x.getMonth()+n); return x}
+function dateAt(y,m,day){return new Date(y,m,day,12)}
+function render(){
+  grid.innerHTML='';
+  const now=new Date(); now.setHours(12,0,0,0);
+  for(let offset=0;offset<2;offset++){
+    const first=addMonths(now,offset); const y=first.getFullYear(), m=first.getMonth();
+    const card=document.createElement('div'); card.className='month-card';
+    const title=document.createElement('h3'); title.textContent=`${monthNames[m]} ${y}`; card.appendChild(title);
+    const weekdays=document.createElement('div'); weekdays.className='weekdays'; dayNames.forEach(x=>{const e=document.createElement('span');e.textContent=x;weekdays.appendChild(e)}); card.appendChild(weekdays);
+    const days=document.createElement('div'); days.className='days';
+    const start=first.getDay(); for(let i=0;i<start;i++){const e=document.createElement('span');e.className='empty';days.appendChild(e)}
+    const count=new Date(y,m+1,0).getDate();
+    for(let day=1;day<=count;day++){
+      const d=dateAt(y,m,day), k=key(d), e=document.createElement('button'); e.type='button'; e.className='day';
+      const isPast=d<now; const st=isPast?'past':(statuses[k]||'available'); e.classList.add(st);
+      e.innerHTML=`<b>${day}</b><small>${st==='booked'?'Booked':st==='pending'?'Pending':st==='past'?'Past':'Available'}</small>`;
+      if(!isPast) e.addEventListener('click',()=>{document.getElementById('date').value=k;document.getElementById('booking').scrollIntoView({behavior:'smooth'});}); else e.disabled=true;
+      days.appendChild(e);
+    }
+    card.appendChild(days); grid.appendChild(card);
+  }
+}
+render();
+setInterval(render, 60*1000);
+if(validCfg){
+  try{
+    const app=initializeApp(cfg); const db=getDatabase(app);
+    onValue(ref(db,'availability'),snap=>{statuses=snap.val()||{}; render(); statusEl.textContent='Live availability is connected.';});
+  }catch(err){statusEl.textContent='Calendar is showing its default availability view. Admin database is not connected yet.';}
+}else{
+  statusEl.textContent='Calendar is ready. Connect Firebase in firebase-config.js to make Booked/Pending changes sync from the admin panel.';
+}
+</script>
+</body></html>
